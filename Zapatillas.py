@@ -4,7 +4,7 @@ import streamlit.components.v1 as components
 
 
 # CONFIGURACION DE LA PÁGINA
-st.set_page_config(page_title='Pajuelo Brand', layout='wide')
+st.set_page_config(page_title='Web page', layout='wide')
 
 
 # CSS PARA CAMBIAR COLOR DE FONDO
