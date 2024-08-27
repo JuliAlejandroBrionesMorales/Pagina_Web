@@ -93,8 +93,8 @@ productos = [
     {"name": "Nike Zapatillas Running Flex Runner PS - mujer", "price": 165.00, "image": "images/IMG_7967.jpg","talla": (42,41), "rating": 4},
 ]
 
-# Ajusta el número de columnas según el ancho de la pantalla
-num_cols = st.slider('Número de columnas por fila', min_value=1, max_value=4, value=2)
+# Definimos el número de columnas que queremos en cada fila
+num_cols = 1
 
 # Agregamos estilos CSS para los recuadros
 st.markdown("""
@@ -125,10 +125,15 @@ st.markdown("""
 
 # Itera sobre los productos en grupos del tamaño `num_cols`
 for i in range(0, len(productos), num_cols):
+    # Crea una nueva fila de columnas
     cols = st.columns(num_cols)
     
+    # Itera sobre los productos en este grupo
     for j in range(num_cols):
+        # Calcula el índice actual del producto
         index = i + j
+        
+        # Verifica que el índice no exceda el número de productos
         if index < len(productos):
             producto = productos[index]
             with cols[j]:
