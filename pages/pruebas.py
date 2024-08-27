@@ -142,10 +142,10 @@ for i in range(0, len(productos), num_cols):
                     </div>
                 """, unsafe_allow_html=True)
 
+
 # Pie de página
 st.markdown("""
-    <hr>
-    <div style="background-color: black; color: white; padding: 20px;">
+    <div style="background-color: black; color: white; padding: 20px; margin-bottom: 0;">
         <div style="display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap;">
             <div style="flex: 1; margin: 10px;">
                 <h4 style="color: white;">Contacto</h4>
@@ -155,9 +155,17 @@ st.markdown("""
                 <h4 style="color: white;">Redes Sociales</h4>
                 <p style="color: white;">Facebook: Sneakers Store</p>
             </div>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
+
+# Pie de página
+st.markdown("""
+    <div style="background-color: black; color: white; padding: 20px; margin-top: 0;">
+        <div style="display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap;">
             <div style="flex: 1; margin: 10px;">
                 <h4 style="color: white;">¿Quienes Somos?</h4>
-                <p style="color: white;">Somos un pequeño grupo de emprendedores que ofrecemos productos 100% originales y únicos.</p>
+                <p style="color: white;">Somos un pequeño grupo de emprendedores.</p>
             </div>
             <div style="flex: 1; margin: 10px;">
                 <h4 style="color: white;">
