@@ -153,7 +153,7 @@ st.markdown("""
             </div>
             <div style="flex: 1; margin: 10px;">
                 <h4 style="color: white;">Redes Sociales</h4>
-                <p style="color: white;">Facebook: Sneakers Store</p>
+                <p style="color: white;">FB: Sneakers Store</p>
             </div>
         </div>
     </div>
