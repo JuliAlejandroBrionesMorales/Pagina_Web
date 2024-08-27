@@ -1,10 +1,10 @@
-# LIBRERIAS
+# LIBRERIAS 
 import streamlit as st
 from PIL import Image
+import math
 
 # Configurar la página
 st.set_page_config(page_title="Sneakers Shop", page_icon=":sneaker:", layout="wide")
-
 
 # CSS PARA CAMBIAR COLOR DE FONDO
 page_bg_color = '''
@@ -15,8 +15,6 @@ page_bg_color = '''
 </style>
 '''
 st.markdown(page_bg_color, unsafe_allow_html=True)
-
-
 
 # Encabezado
 st.markdown("""
@@ -65,21 +63,18 @@ st.markdown("""
     
 """, unsafe_allow_html=True)
 
-
 # BARRA DE LOGOS
 st.markdown("""
-    <div style="display: flex; justify-content: center; align-items: center;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" width="150" style="margin: 10px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" width="150" style="margin: 10px;">
-        <img src="https://th.bing.com/th/id/R.b4049b31f88c336c5a56325f84393742?rik=kdIFVZfk3usVjw&pid=ImgRaw&r=0" width="150" style="margin: 10px;">
-        <img src="https://logos-world.net/wp-content/uploads/2020/04/Puma-Logo.png" width="150" style="margin: 10px;">
-        <img src="https://th.bing.com/th/id/OIP.LUkdc8RvH1wyDVtuKtaRbQHaDI?rs=1&pid=ImgDetMain" width="150" style="margin: 10px;">
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" width="100" style="margin: 10px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" width="100" style="margin: 10px;">
+        <img src="https://th.bing.com/th/id/R.b4049b31f88c336c5a56325f84393742?rik=kdIFVZfk3usVjw&pid=ImgRaw&r=0" width="100" style="margin: 10px;">
+        <img src="https://logos-world.net/wp-content/uploads/2020/04/Puma-Logo.png" width="100" style="margin: 10px;">
+        <img src="https://th.bing.com/th/id/OIP.LUkdc8RvH1wyDVtuKtaRbQHaDI?rs=1&pid=ImgDetMain" width="100" style="margin: 10px;">
     </div>
 """, unsafe_allow_html=True)
 
-
-
-# TTITULO PRODUCTOS
+# TÍTULO PRODUCTOS
 st.markdown("<h2 style='text-align: center; margin-top: 50px;'>Productos</h2>", unsafe_allow_html=True)
 
 # Lista de productos
@@ -98,8 +93,8 @@ productos = [
     {"name": "Nike Zapatillas Running Flex Runner PS - mujer", "price": 165.00, "image": "images/IMG_7967.jpg","talla": (42,41), "rating": 4},
 ]
 
-# Definimos el número de columnas que queremos en cada fila
-num_cols = 4
+# Ajusta el número de columnas según el ancho de la pantalla
+num_cols = st.slider('Número de columnas por fila', min_value=1, max_value=4, value=2)
 
 # Agregamos estilos CSS para los recuadros
 st.markdown("""
@@ -130,15 +125,10 @@ st.markdown("""
 
 # Itera sobre los productos en grupos del tamaño `num_cols`
 for i in range(0, len(productos), num_cols):
-    # Crea una nueva fila de columnas
     cols = st.columns(num_cols)
     
-    # Itera sobre los productos en este grupo
     for j in range(num_cols):
-        # Calcula el índice actual del producto
         index = i + j
-        
-        # Verifica que el índice no exceda el número de productos
         if index < len(productos):
             producto = productos[index]
             with cols[j]:
@@ -152,27 +142,24 @@ for i in range(0, len(productos), num_cols):
                     </div>
                 """, unsafe_allow_html=True)
 
-
-
-
 # Pie de página
 st.markdown("""
     <hr>
     <div style="background-color: black; color: white; padding: 20px;">
-        <div style="display: flex; justify-content: space-around; text-align: center;">
-            <div>
+        <div style="display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap;">
+            <div style="flex: 1; margin: 10px;">
                 <h4 style="color: white;">Contacto</h4>
                 <p style="color: white;">Telf: +51 962 793 952</p>
             </div>
-            <div>
+            <div style="flex: 1; margin: 10px;">
                 <h4 style="color: white;">Redes Sociales</h4>
                 <p style="color: white;">Facebook: Sneakers Store</p>
             </div>
-            <div>
+            <div style="flex: 1; margin: 10px;">
                 <h4 style="color: white;">¿Quienes Somos?</h4>
                 <p style="color: white;">Somos un pequeño grupo de emprendedores que ofrecemos productos 100% originales y únicos.</p>
             </div>
-            <div>
+            <div style="flex: 1; margin: 10px;">
                 <h4 style="color: white;">
                     <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-icone.png" alt="WhatsApp Logo" style="width:20px; height:20px; vertical-align:middle; margin-right:5px;">
                     WhatsApp
