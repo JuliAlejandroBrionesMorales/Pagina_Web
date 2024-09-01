@@ -1,9 +1,9 @@
-# LIBRERIAS 
+# ---------------------- LIBRERIAS---------------------- 
 import streamlit as st
 from PIL import Image, ExifTags
 import base64
 from io import BytesIO
-import math
+
 
 
 # ---------------------- CONFIGURACIÓN DE LA PÁGINA ---------------------- 
@@ -105,33 +105,6 @@ def imagen_a_base64(imagen):
     imagen_str = base64.b64encode(buffer.getvalue()).decode("utf-8")
     return imagen_str
 
-# Estilos CSS para los recuadros
-st.markdown("""
-    <style>
-    .product-card {
-        background-color: #f8f8f8;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    .product-image {
-        border-radius: 10px;
-        margin-bottom: 10px;
-        width: 100%;
-    }
-    .product-name {
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-    .product-price {
-        color: #FF5733;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 # Lista de productos
 productos = [
@@ -150,7 +123,35 @@ productos = [
 ]
 
 # Número de columnas para la visualización
-num_cols = 1
+num_cols = 3
+
+# Agregamos estilos CSS para los recuadros
+st.markdown("""
+    <style>
+    .product-card {
+        background-color: #f8f8f8;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .product-image {
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .product-name {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .product-price {
+        color: #FF5733;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # Itera sobre los productos en grupos del tamaño `num_cols`
 for i in range(0, len(productos), num_cols):
@@ -184,39 +185,106 @@ for i in range(0, len(productos), num_cols):
 
 
 
+
+
 # ---------------------- PIE DE PÁGINA ---------------------- 
 st.markdown("""
-    <div style="background-color: black; color: white; padding: 20px; margin-bottom: 0;">
-        <div style="display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap;">
-            <div style="flex: 1; margin: 10px;">
-                <h4 style="color: white;">Contacto</h4>
-                <p style="color: white;">Telf: +51 962 793 952</p>
-            </div>
-            <div style="flex: 1; margin: 10px;">
-                <h4 style="color: white;">Redes Sociales</h4>
-                <p style="color: white;">Facebook: Sneakers Store</p>
-            </div>
-        </div>
-    </div>
-""", unsafe_allow_html=True)
+    <hr>
+    <style>
+        /* Estilo para pantallas grandes (desktops y laptops) */
+        @media (min-width: 768px) {
+            .footer-container {
+                display: flex;
+                justify-content: space-around;
+                text-align: center;
+            }
+            .footer-item {
+                flex: 1;
+                padding: 10px;
+            }
+        }
 
+        /* Estilo para pantallas medianas (tablets) */
+        @media (min-width: 480px) and (max-width: 767px) {
+            .footer-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                text-align: center;
+            }
+            .footer-item {
+                flex: 1 1 45%;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+        }
+
+        /* Estilo para pantallas pequeñas (móviles) */
+        @media (max-width: 479px) {
+            .footer-container {
+                display: block;
+                margin: 0;
+                text-align: center;
+            }
+            .footer-item {
+                padding: 5px;
+                box-sizing: border-box;
+            }
+        }
+
+        .footer-container {
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+
+        .footer-item h4, .footer-item p {
+            color: white;
+            line-height: 1.2;
+            margin: 3px 0;
+            padding: 0
+        }
+
+        .whatsapp-logo {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .whatsapp-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .whatsapp-button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
 st.markdown("""
-    <div style="background-color: black; color: white; padding: 20px; margin-top: 0;">
-        <div style="display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap;">
-            <div style="flex: 1; margin: 10px;">
-                <h4 style="color: white;">¿Quienes Somos?</h4>
-                <p style="color: white;">Somos un pequeño grupo de emprendedores.</p>
-            </div>
-            <div style="flex: 1; margin: 10px;">
-                <h4 style="color: white;">
-                    <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-icone.png" alt="WhatsApp Logo" style="width:20px; height:20px; vertical-align:middle; margin-right:5px;">
-                    WhatsApp
-                </h4>
-                <a id="whatsapp-link" href="https://wa.me/51962793952?text=" target="_blank">
-                    <button onclick="sendMessage()" style="background-color: green; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Envíanos un mensaje</button>
-                </a>
-            </div>
+    <div class="footer-container">
+        <div class="footer-item">
+            <h4>Contacto</h4>
+            <p>Telf: +51 962 793 952</p>
+        </div>
+        <div class="footer-item">
+            <h4>Redes Sociales</h4>
+            <p>Facebook: Sneakers Store</p>
+        </div>
+    <div class="footer-item">
+            <h4>
+                <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-icone.png" alt="WhatsApp Logo" class="whatsapp-logo">
+                WhatsApp
+            </h4>
+            <a id="whatsapp-link" href="https://wa.me/51962793952?text=" target="_blank">
+                <button class="whatsapp-button" onclick="sendMessage()">Envíanos un mensaje</button>
+            </a>
         </div>
     </div>
 
