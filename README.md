@@ -9,5 +9,6 @@ Esta página se centra en 3 secciones diferentes:
 
 Para poder realizar los pedidos, hemos implementado la función de WhatsApp para que los clientes se sientan libres de ponerse en contacto con el equipo de soporte en cualquier momento.
 
+En enlace la página web es el siguiente: https://carmenpajuelobrand.streamlit.app/Bolsos
 
 
